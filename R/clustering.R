@@ -1162,7 +1162,7 @@ degPatterns = function(ma, metadata, minc=15, summarize="merge",
         df.merge <- merge(clust,clust.cutree,by='row.names')
         df.merge.sorted <- df.merge[order(df.merge$y),]
         lbls<-unique(df.merge.sorted$x)
-        dend_plot <- color_branches(dend, k = nClusters, groupLabels = lbls) %>% dendextend::set("labels", "")
+        dend_plot <- dendextend::color_branches(dend, k = nClusters, groupLabels = lbls) %>% dendextend::set("labels", "")
         
         
         if (plot)
