@@ -1152,22 +1152,7 @@ degPatterns = function(ma, metadata, minc=15, summarize="merge",
         if (plot)
             plot(dend_plot, xlab="", ylab="", main="", sub="", axes=FALSE, cex = 2)
     }
-    if (length(unique(groups)) > 0 & is.numeric(nClusters)){
-        dend <- cluster_genes 
-        clust <- cutree(as.hclust(dend), k = nClusters)
-        clust.cutree <- dendextend:::cutree(dend, k = nClusters, order_clusters_as_data = FALSE)
-        dend <- as.dendrogram(dend, k = nClusters)
-        idx <- order(names(clust.cutree))
-        clust.cutree <- clust.cutree[idx]
-        df.merge <- merge(clust,clust.cutree,by='row.names')
-        df.merge.sorted <- df.merge[order(df.merge$y),]
-        lbls<-unique(df.merge.sorted$x)
-        dend_plot <- dendextend::color_branches(dend, k = nClusters, groupLabels = lbls) %>% dendextend::set("labels", "")
-        
-        
-        if (plot)
-            plot(dend_plot, xlab="", ylab="", main="", sub="", axes=FALSE, cex = 2)
-    }
+    
     
     invisible(list(df = df,
          pass = unique(groups),
